@@ -1,1 +1,25 @@
-<p>item-list works!</p>
+<section>
+  <h1 class="section-title">Items</h1>
+
+  @if (loading()) {
+    <p>Loading items...</p>
+  } @else if (error()) {
+    <p class="error-text">{{ error() }}</p>
+  } @else {
+    <ul class="card-list">
+      @for (item of items(); track item.id) {
+        <li class="card">
+          <div class="card-title">{{ item.name }}</div>
+          <img class="card-image" [src]="imageUrl(item)" [alt]="item.name" width="300" height="200"
+               (error)="useFallbackImage($event)" />
+          <div class="card-footer">
+            <span>Price: {{ item.price | currency: 'EUR' }}</span>
+            <app-stock-badge [level]="item.urgencyLevel" />
+          </div>
+        </li>
+      } @empty {
+        <p>There are no items yet.</p>
+      }
+    </ul>
+  }
+</section>
