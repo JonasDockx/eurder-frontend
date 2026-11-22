@@ -1,8 +1,9 @@
-import { Component, inject, OnInit, signal } from '@angular/core';
+import { Component, computed, inject, OnInit, signal } from '@angular/core';
 import { ItemService } from '../../services/item.service';
 import { Item } from '../../models/item';
 import { StockBadge } from '../../shared/stock-badge/stock-badge';
 import { CurrencyPipe } from '@angular/common';
+import { startsWithFilter } from '../../shared/starts-with';
 
 @Component({
   imports: [StockBadge, CurrencyPipe],
@@ -16,6 +17,10 @@ export class ItemList implements OnInit {
   protected readonly items = signal<Item[]>([]);
   protected readonly loading = signal(true);
   protected readonly error = signal('');
+  protected readonly search = signal('');
+  protected readonly filteredItems = computed(() =>
+    startsWithFilter(this.items(), this.search(), (item) => item.name),
+  );
 
   ngOnInit(): void {
     this.itemService.getAll().subscribe({

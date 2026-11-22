@@ -1,5 +1,9 @@
 <section>
-  <h1 class="section-title">Items</h1>
+  <div class="section-header">
+    <h1 class="section-title">Items</h1>
+    <input class="search" type="search" placeholder="Filter by name..." aria-label="Filter items by name"
+           [value]="search()" (input)="search.set($any($event.target).value)" />
+  </div>
 
   @if (loading()) {
     <p>Loading items...</p>
@@ -7,7 +11,7 @@
     <p class="error-text">{{ error() }}</p>
   } @else {
     <ul class="card-list">
-      @for (item of items(); track item.id) {
+      @for (item of filteredItems(); track item.id) {
         <li class="card">
           <div class="card-title">{{ item.name }}</div>
           <img class="card-image" [src]="imageUrl(item)" [alt]="item.name" width="300" height="200"
@@ -18,7 +22,11 @@
           </div>
         </li>
       } @empty {
-        <p>There are no items yet.</p>
+        @if (search()) {
+          <p>No items starts with "{{ search() }}".</p>
+        } @else {
+          <p>There are no items yet.</p>
+        }
       }
     </ul>
   }
