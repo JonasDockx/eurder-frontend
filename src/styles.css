@@ -171,3 +171,13 @@ a.btn {
   width: 110px;
   flex: none;
 }
+
+.btn-basket {
+  color: white;
+  background: #f0a30a;
+  border-color: #c88a0a;
+}
+
+.spacer {
+  flex: 1;
+}
