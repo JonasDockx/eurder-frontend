@@ -13,6 +13,10 @@ export class ItemService {
     return this.http.get<Item[]>(this.url);
   }
 
+  getById(id: string): Observable<Item> {
+    return this.http.get<Item>(`${this.url}/${id}`);
+  }
+
   create(item: ItemRequest): Observable<Item> {
     return this.http.post<Item>(this.url, item);
   }

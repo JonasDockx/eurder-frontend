@@ -94,7 +94,6 @@ a {
   margin-top: 1.5rem;
 }
 
-/* Buttons */
 .btn {
   font: inherit;
   font-weight: 600;
@@ -119,4 +118,41 @@ a {
 .counter-row {
   text-align: right;
   margin-top: 0.25rem;
+}
+
+.form-control[readonly] {
+  background: #f3f3f3;
+}
+
+.muted {
+  color: #999;
+}
+
+.input-group {
+  display: flex;
+}
+
+.input-prefix {
+  display: flex;
+  align-items: center;
+  padding: 0 0.6rem;
+  border: 1px solid var(--border);
+  border-right: none;
+  background: #f3f3f3;
+}
+
+.button-row.right {
+  justify-content: flex-end;
+}
+
+.btn-edit {
+  min-width: 150px;
+  color: white;
+  background: #1ba1e2;
+  border-color: #1ba1e2;
+}
+
+a.btn {
+  color: inherit;
+  text-align: center;
 }

@@ -13,9 +13,11 @@
     <ul class="card-list">
       @for (item of filteredItems(); track item.id) {
         <li class="card">
-          <div class="card-title">{{ item.name }}</div>
-          <img class="card-image" [src]="imageUrl(item)" [alt]="item.name" width="300" height="200"
-               (error)="useFallbackImage($event)" />
+          <a class="card-title" [routerLink]="['/items', item.id]">{{ item.name }}</a>
+          <a [routerLink]="['/items', item.id]" tabindex="-1">
+            <img class="card-image" [src]="imageUrl(item)" [alt]="item.name" width="300" height="200"
+                 (error)="useFallbackImage($event)" />
+          </a>
           <div class="card-footer">
             <span>Price: {{ item.price | currency: 'EUR' }}</span>
             <app-stock-badge [level]="item.urgencyLevel" />

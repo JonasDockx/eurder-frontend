@@ -4,9 +4,10 @@ import { Item } from '../../models/item';
 import { StockBadge } from '../../shared/stock-badge/stock-badge';
 import { CurrencyPipe } from '@angular/common';
 import { startsWithFilter } from '../../shared/starts-with';
+import { RouterLink } from '@angular/router';
 
 @Component({
-  imports: [StockBadge, CurrencyPipe],
+  imports: [StockBadge, CurrencyPipe, RouterLink],
   selector: 'app-item-list',
   styleUrl: './item-list.css',
   templateUrl: './item-list.html',

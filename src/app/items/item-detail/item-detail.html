@@ -1,0 +1,42 @@
+<section>
+  <div class="section-header">
+    <h1 class="section-title">Item <span class="muted">{{ id() }}</span></h1>
+  </div>
+
+  @if (error()) {
+    <p class="error-text" role="alert">{{ error() }}</p>
+  } @else if (item(); as item) {
+    <form class="form">
+      <label class="form-label" for="name">Name</label>
+      <<input class="form-control" id="name" [value]="item.name" readonly />
+
+      <label class="form-label" for="description">Description</label>
+      <textarea class="form-control" id="description" rows="4" readonly>{{ item.description }}</textarea>
+
+      <div class="row">
+        <div class="col">
+          <label class="form-label" for="price">Price</label>
+          <div class="input-group">
+            <span class="input-prefix">€</span>
+            <input class="form-control" id="price" [value]="item.price | number: '1.2-2'" readonly />
+          </div>
+        </div>
+        <div class="col">
+          <label class="form-label" for="amount">Amount of Stock</label>
+          <input class="form-control" id="amount" [value]="item.amount" readonly />
+        </div>
+      </div>
+
+      <div class="stock-row">
+        <app-stock-badge [level]="item.urgencyLevel" />
+      </div>
+
+      <div class="button-row right">
+        <button class="btn btn-edit" type="button" disabled title="Comes with IT6">EDIT</button>
+        <a class="btn" routerLink="/items">BACK</a>
+      </div>
+    </form>
+  } @else {
+    <p>Loading...</p>
+  }
+</section>
