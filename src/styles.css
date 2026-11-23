@@ -48,3 +48,70 @@ a {
 .error-text {
   color: var(--danger);
 }
+
+.form {
+  display: flex;
+  flex-direction: column;
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.form-label {
+  display: block;
+  color: #777;
+  margin: 1rem 0 0.35rem;
+}
+
+.form-control {
+  width: 100%;
+  font: inherit;
+  padding: 0.4rem 0.6rem;
+  border: 1px solid var(--border);
+}
+
+.form-control.ng-invalid.ng-touched {
+  border-color: var(--danger);
+}
+
+.row {
+  display: flex;
+  gap: 1rem;
+}
+
+.col {
+  flex: 1;
+  min-width: 0;
+}
+
+.error-text {
+  font-size: 0.85rem;
+  margin: 0.3rem 0 0;
+}
+
+.button-row {
+  display: flex;
+  gap: 0.75rem;
+  margin-top: 1.5rem;
+}
+
+/* Buttons */
+.btn {
+  font: inherit;
+  font-weight: 600;
+  padding: 0.5rem 1rem;
+  border: 1px solid black;
+  border-radius: 10px;
+  background: white;
+  cursor: pointer;
+}
+
+.btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.btn-create {
+  flex: 1;
+  color: white;
+  background: limegreen;
+}

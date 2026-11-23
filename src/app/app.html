@@ -4,7 +4,15 @@
     <span class="logo-title">&Ouml;RDER</span>
   </a>
   <nav>
-    <a routerLink="/items" routerLinkActive="active">Items</a>
+    <a routerLink="/items" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Items</a>
+    @if (auth.isAdmin()) {
+      <a routerLink="/items/new" routerLinkActive="active">New item</a>
+    }
+    @if (auth.user(); as user) {
+      <button type="button" (click)="logout()" [title]="user.email">Log out</button>
+    } @else {
+      <a routerLink="/login" routerLinkActive="active">Log in</a>
+    }
   </nav>
 </header>
 

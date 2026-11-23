@@ -2,7 +2,7 @@ import { inject, Service } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../../environments/environment';
 import { Observable } from 'rxjs';
-import { Item } from '../models/item';
+import { Item, ItemRequest } from '../models/item';
 
 @Service()
 export class ItemService {
@@ -11,5 +11,9 @@ export class ItemService {
 
   getAll(): Observable<Item[]> {
     return this.http.get<Item[]>(this.url);
+  }
+
+  create(item: ItemRequest): Observable<Item> {
+    return this.http.post<Item>(this.url, item);
   }
 }

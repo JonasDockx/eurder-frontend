@@ -30,7 +30,10 @@ nav {
   display: flex;
 }
 
-nav a {
+nav a, nav button {
+  font: inherit;
+  background: none;
+  cursor: pointer;
   min-width: 120px;
   padding: 0.25rem 1rem;
   text-align: center;
@@ -38,8 +41,8 @@ nav a {
   border: 1px solid var(--border);
 }
 
-nav a + a {
-  border-left: none;
+nav > * + * {
+  margin-left: -1px;
 }
 
 nav a.active {

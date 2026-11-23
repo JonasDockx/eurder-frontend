@@ -8,3 +8,10 @@ export interface Item {
   amount: number;
   urgencyLevel: UrgencyLevel;
 }
+
+export interface ItemRequest {
+  name: string;
+  description: string;
+  price: number;
+  amount: number;
+}
