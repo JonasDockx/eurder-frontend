@@ -22,6 +22,12 @@ export const routes: Routes = [
     canActivate: [adminGuard],
     title: 'Customer',
   },
+  {
+    path: 'customers/:id/edit',
+    component: CustomerForm,
+    canActivate: [adminGuard],
+    title: 'Edit customer',
+  },
   { path: 'login', component: Login, title: 'Log in' },
   { path: '**', redirectTo: 'items' },
 ];

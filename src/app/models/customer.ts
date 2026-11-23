@@ -23,3 +23,5 @@ export interface CreateCustomerRequest {
   address: Address;
   phoneNumber: string;
 }
+
+export type UpdateCustomerRequest = Omit<CreateCustomerRequest, 'password'>;
