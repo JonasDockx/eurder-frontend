@@ -10,6 +10,7 @@ export const routes: Routes = [
   { path: 'items', component: ItemList, title: 'Items' },
   { path: 'items/new', component: ItemForm, canActivate: [adminGuard], title: 'Create item' },
   { path: 'items/:id', component: ItemDetail, title: 'Item' },
+  { path: 'items/:id/edit', component: ItemForm, canActivate: [adminGuard], title: 'Edit item' },
   { path: 'login', component: Login, title: 'Log in' },
   { path: '**', redirectTo: 'items' },
 ];

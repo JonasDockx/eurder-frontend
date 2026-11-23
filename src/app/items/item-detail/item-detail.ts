@@ -5,6 +5,7 @@ import { Item } from '../../models/item';
 import { StockBadge } from '../../shared/stock-badge/stock-badge';
 import { RouterLink } from '@angular/router';
 import { DecimalPipe } from '@angular/common';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   imports: [StockBadge, RouterLink, DecimalPipe],
@@ -14,6 +15,7 @@ import { DecimalPipe } from '@angular/common';
 })
 export class ItemDetail implements OnInit {
   private readonly itemService = inject(ItemService);
+  protected readonly auth = inject(AuthService);
 
   readonly id = input.required<string>();
 
