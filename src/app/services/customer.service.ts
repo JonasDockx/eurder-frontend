@@ -16,4 +16,8 @@ export class CustomerService {
   create(customer: CreateCustomerRequest): Observable<Customer> {
     return this.http.post<Customer>(this.url, customer);
   }
+
+  getById(id: string): Observable<Customer> {
+    return this.http.get<Customer>(`${this.url}/${id}`);
+  }
 }

@@ -1,0 +1,76 @@
+<section>
+  <div class="section-header">
+    <h1 class="section-title">Customer <span class="muted">{{ id() }}</span></h1>
+  </div>
+
+  @if (error()) {
+    <p class="error-text" role="alert">{{ error() }}</p>
+  } @else if (customer(); as customer) {
+    @let email = splitEmail(customer.email);
+    @let phone = splitPhone(customer.phoneNumber);
+
+    <form class="form wide">
+      <div class="row">
+        <div class="col">
+          <label class="form-label" for="firstName">Firstname</label>
+          <input class="form-control" id="firstName" [value]="customer.firstName" readonly />
+        </div>
+        <div class="col">
+          <label class="form-label" for="lastName">Lastname</label>
+          <input class="form-control" id="lastName" [value]="customer.lastName" readonly />
+        </div>
+      </div>
+
+      <label class="form-label" for="emailUser">Email</label>
+      <div class="input-group">
+        <input class="form-control" id="emailUser" [value]="email.user" readonly />
+        <span class="input-prefix">&#64;</span>
+        <input class="form-control" [value]="email.domain" readonly aria-label="Email domain" />
+      </div>
+
+      <label class="form-label" for="phoneNumber">Phone number (mobile)</label>
+      <div class="row">
+        <div class="input-group country-code">
+          <span class="input-prefix">+</span>
+          <input class="form-control" [value]="phone.countryCode" readonly aria-label="Country code" />
+        </div>
+        <div class="col">
+          <input class="form-control" id="phoneNumber" [value]="phone.number" readonly />
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col wide-col">
+          <label class="form-label" for="street">Street</label>
+          <input class="form-control" id="street" [value]="customer.address.street" readonly />
+        </div>
+        <div class="col">
+          <label class="form-label" for="houseNumber">Number</label>
+          <input class="form-control" id="houseNumber" [value]="customer.address.houseNumber" readonly />
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col">
+          <label class="form-label" for="postalCode">Postalcode</label>
+          <input class="form-control" id="postalCode" [value]="customer.address.postalCode" readonly />
+        </div>
+        <div class="col">
+          <label class="form-label" for="city">City</label>
+          <input class="form-control" id="city" [value]="customer.address.city" readonly />
+        </div>
+        <div class="col">
+          <label class="form-label" for="country">Country</label>
+          <input class="form-control" id="country" [value]="customer.address.country ?? ''" readonly />
+        </div>
+      </div>
+
+      <div class="button-row right">
+        <a class="btn btn-edit" [routerLink]="['/customers', customer.id, 'edit']">EDIT</a>
+        <a class="btn" routerLink="/customers">BACK</a>
+      </div>
+    </form>
+  } @else {
+    <p>Loading...</p>
+  }
+</section>

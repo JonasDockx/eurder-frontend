@@ -6,6 +6,7 @@ import { Login } from './auth/login/login';
 import { ItemDetail } from './items/item-detail/item-detail';
 import { CustomerList } from './customers/customer-list/customer-list';
 import { CustomerForm } from './customers/customer-form/customer-form';
+import { CustomerDetail } from './customers/customer-detail/customer-detail';
 
 export const routes: Routes = [
   { path: '', redirectTo: 'items', pathMatch: 'full' },
@@ -15,6 +16,12 @@ export const routes: Routes = [
   { path: 'items/:id/edit', component: ItemForm, canActivate: [adminGuard], title: 'Edit item' },
   { path: 'customers', component: CustomerList, canActivate: [adminGuard], title: 'Customers' },
   { path: 'customers/new', component: CustomerForm, title: 'Create customer' },
+  {
+    path: 'customers/:id',
+    component: CustomerDetail,
+    canActivate: [adminGuard],
+    title: 'Customer',
+  },
   { path: 'login', component: Login, title: 'Log in' },
   { path: '**', redirectTo: 'items' },
 ];

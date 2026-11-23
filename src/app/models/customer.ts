@@ -3,7 +3,7 @@ export interface Address {
   houseNumber: string;
   postalCode: string;
   city: string;
-  country: string;
+  country: string | null;
 }
 
 export interface Customer {
