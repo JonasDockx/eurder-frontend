@@ -1,0 +1,46 @@
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  border: 1px solid var(--text);
+}
+
+.table th, .table td {
+  padding: 0.9rem 0.5rem;
+  text-align: left;
+  border-bottom: 1px solid var(--text);
+}
+
+.table thead th {
+  background: #f3f3f3;
+  color: #666;
+  font-weight: normal;
+}
+
+.table td {
+  color: #555;
+}
+
+.id {
+  font-family: monospace;
+  font-size: 0.85rem;
+}
+
+.table .actions {
+  text-align: right;
+  white-space: nowrap;
+}
+
+.actions .btn + .btn {
+  margin-left: 0.4rem;
+}
+
+.btn-small {
+  min-width: 0;
+  padding: 0.3rem 0.8rem;
+  font-size: 0.85rem;
+}
+
+.btn-view {
+  background: #dae8fc;
+  border-color: #6c8ebf;
+}

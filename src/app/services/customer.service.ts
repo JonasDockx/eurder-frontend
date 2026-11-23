@@ -1,0 +1,15 @@
+import { inject, Service } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { environment } from '../../environments/environment';
+import { Observable } from 'rxjs';
+import { Customer } from '../models/customer';
+
+@Service()
+export class CustomerService {
+  private readonly http = inject(HttpClient);
+  private readonly url = `${environment.apiUrl}/customers`;
+
+  getAll(): Observable<Customer[]> {
+    return this.http.get<Customer[]>(this.url);
+  }
+}
