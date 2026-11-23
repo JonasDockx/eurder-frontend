@@ -1,0 +1,9 @@
+.counter {
+  font-size: 0.85rem;
+  color: #777;
+}
+
+.counter.limit {
+  color: var(--danger);
+  font-weight: bold;
+}

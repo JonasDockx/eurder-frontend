@@ -3,11 +3,13 @@ import { NonNullableFormBuilder, ReactiveFormsModule, Validators } from '@angula
 import { ItemService } from '../../services/item.service';
 import { Router } from '@angular/router';
 import { errorMessage } from '../../shared/error-message';
+import { toSignal } from '@angular/core/rxjs-interop';
+import { CharCounter } from '../../shared/char-counter/char-counter';
 
 export const DESCRIPTION_MAX = 255;
 
 @Component({
-  imports: [ReactiveFormsModule],
+  imports: [ReactiveFormsModule, CharCounter],
   selector: 'app-item-form',
   styleUrl: './item-form.css',
   templateUrl: './item-form.html',
@@ -25,6 +27,10 @@ export class ItemForm {
     description: ['', [Validators.required, Validators.maxLength(DESCRIPTION_MAX)]],
     price: [0, [Validators.required, Validators.min(0)]],
     amount: [0, [Validators.required, Validators.min(0), Validators.pattern(/^\d+$/)]],
+  });
+
+  protected readonly description = toSignal(this.form.controls.description.valueChanges, {
+    initialValue: '',
   });
 
   protected showError(field: keyof typeof this.form.controls, error: string): boolean {
@@ -47,5 +53,9 @@ export class ItemForm {
         this.saving.set(false);
       },
     });
+  }
+
+  cancel(): void {
+    this.router.navigate(['/items']);
   }
 }

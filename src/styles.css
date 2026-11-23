@@ -115,3 +115,8 @@ a {
   color: white;
   background: limegreen;
 }
+
+.counter-row {
+  text-align: right;
+  margin-top: 0.25rem;
+}

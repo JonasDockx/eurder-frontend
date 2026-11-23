@@ -12,6 +12,9 @@
 
     <label class="form-label" for="description">Description</label>
     <textarea class="form-control" id="description" rows="4" formControlName="description"></textarea>
+    <div class="counter-row">
+      <app-char-counter [length]="description().length" [max]="descriptionMax" />
+    </div>
     @if (showError('description', 'required')) {
       <p class="error-text">Description is required</p>
     }
@@ -50,6 +53,7 @@
 
     <div class="button-row">
       <button class="btn btn-create" type="submit" [disabled]="saving()">CREATE</button>
+      <button class="btn" type="button" (click)="cancel()">CANCEL</button>
     </div>
   </form>
 </section>
