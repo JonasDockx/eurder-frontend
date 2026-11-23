@@ -40,9 +40,10 @@ a {
 
 .search {
   font: inherit;
-  padding: 0.35rem 0.6rem;
+  padding: 0.35rem 2rem 0.35rem 0.6rem;
   width: 260px;
   border: 1px solid var(--border);
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%231ba1e2' stroke-width='2'%3E%3Ccircle cx='14' cy='10' r='6'/%3E%3Cpath d='M10 14l-6 6'/%3E%3C/svg%3E") no-repeat right 0.5rem center / 1.1rem;
 }
 
 .error-text {

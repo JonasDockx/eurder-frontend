@@ -1,6 +1,8 @@
 <section>
   <div class="section-header">
     <h1 class="section-title">Customers</h1>
+    <input class="search" type="search" placeholder="Filter by last name..." aria-label="Filter customers by last name"
+           [value]="search()" (input)="search.set($any($event.target).value)" />
   </div>
 
   @if (loading()) {
@@ -20,7 +22,7 @@
       </tr>
       </thead>
       <tbody>
-        @for (customer of customers(); track customer.id) {
+        @for (customer of filteredCustomers(); track customer.id) {
           <tr>
             <td class="id">{{ customer.id }}</td>
             <td>{{ customer.firstName }}</td>
@@ -32,7 +34,13 @@
           </tr>
         } @empty {
           <tr>
-            <td colspan="4">There are no customers uet.</td>
+            <td colspan="4">
+              @if (search()) {
+                No customers with a last name starting with "{{ search() }}".
+              } @else {
+                There are no customers yet.
+              }
+            </td>
           </tr>
         }
       </tbody>
