@@ -14,3 +14,12 @@ export interface Customer {
   address: Address;
   phoneNumber: string;
 }
+
+export interface CreateCustomerRequest {
+  firstName: string;
+  lastName: string;
+  email: string;
+  password: string;
+  address: Address;
+  phoneNumber: string;
+}

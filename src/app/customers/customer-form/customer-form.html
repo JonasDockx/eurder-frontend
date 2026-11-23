@@ -1,0 +1,116 @@
+<section>
+  <div class="section-header">
+    <h1 class="section-title">Create customer</h1>
+  </div>
+
+  <form class="form wide" [formGroup]="form" (ngSubmit)="save()" novalidate>
+    <div class="row">
+      <div class="col">
+        <label class="form-label" for="firstName">Firstname</label>
+        <input class="form-control" id="firstName" formControlName="firstName" autocomplete="given-name" />
+        @if (showError('firstName', 'required')) {
+          <p class="error-text">Firstname is required.</p>
+        }
+      </div>
+      <div class="col">
+        <label class="form-label" for="lastName">Lastname</label>
+        <input class="form-control" id="lastName" formControlName="lastName" autocomplete="family-name" />
+        @if (showError('lastName', 'required')) {
+          <p class="error-text">Lastname is required.</p>
+        }
+      </div>
+    </div>
+
+    <label class="form-label" for="emailUser">Email</label>
+    <div class="input-group" formGroupName="email">
+      <input class="form-control" id="emailUser" formControlName="user" aria-label="Email, part before the @" />
+      <span class="input-prefix">&#64;</span>
+      <input class="form-control" formControlName="domain" aria-label="Email, domain after the @"
+             placeholder="example.com /">
+    </div>
+    @if (showError('email.user', 'required') || showError('email.domain', 'required')) {
+      <p class="error-text">Email is required.</p>
+    } @else if (showError('email.user', 'pattern') || showError('email.domain', 'pattern')) {
+      <p class="error-text">This is not a valid email address.</p>
+    }
+
+    <label class="form-label" for="password">Password</label>
+    <input class="form-control" id="password" type="password" formControlName="password" autocomplete="new-password" />
+    @if (showError('password', 'required')) {
+      <p class="error-text">Password is required.</p>
+    } @else if (showError('password', 'minlength')) {
+      <p class="error-text">Password needs at least 4 characters.</p>
+    }
+
+    <label class="form-label" for="phoneNumber">Phone number (mobile)</label>
+    <div class="row" formGroupName="phone">
+      <div class="input-group country-code">
+        <span class="input-prefix">+</span>
+        <input class="form-control" formControlName="countryCode" aria-label="Country code" inputmode="numeric" />
+      </div>
+      <div class="col">
+        <input class="form-control" id="phoneNumber" type="tel" formControlName="number" placeholder="470 12 34 56" />
+      </div>
+    </div>
+    @if (showError('phone.countryCode', 'required') || showError('phone.number', 'required')) {
+      <p class="error-text">Phone number is required.</p>
+    } @else if (showError('phone.countryCode', 'pattern') || showError('phone.number', 'pattern')) {
+      <p class="error-text">Use digits only: a country code of 1–3 digits and a number of 6–15 digits.</p>
+    }
+
+    <div formGroupName="address">
+      <div class="row">
+        <div class="col wide-col">
+          <label class="form-label" for="street">Street</label>
+          <input class="form-control" id="street" formControlName="street" />
+          @if (showError('address.street', 'required')) {
+            <p class="error-text">Street is required.</p>
+          }
+        </div>
+        <div class="col">
+          <label class="form-label" for="houseNumber">Number</label>
+          <input class="form-control" id="houseNumber" formControlName="houseNumber" />
+          @if (showError('address.houseNumber', 'required')) {
+            <p class="error-text">Number is required.</p>
+          }
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col">
+          <label class="form-label" for="postalCode">Postalcode</label>
+          <input class="form-control" id="postalCode" formControlName="postalCode" inputmode="numeric" />
+          @if (showError('address.postalCode', 'required')) {
+            <p class="error-text">Postalcode is required.</p>
+          } @else if (showError('address.postalCode', 'pattern')) {
+            <p class="error-text">Use 4 or 5 digits.</p>
+          }
+        </div>
+        <div class="col">
+          <label class="form-label" for="city">City</label>
+          <input class="form-control" id="city" formControlName="city" />
+          @if (showError('address.city', 'required')) {
+            <p class="error-text">City is required.</p>
+          }
+        </div>
+        <div class="col">
+          <label class="form-label" for="country">Country</label>
+          <select class="form-control" id="country" formControlName="country">
+            @for (country of countries; track country) {
+              <option [value]="country">{{ country }}</option>
+            }
+          </select>
+        </div>
+      </div>
+    </div>
+
+    @if (serverError()) {
+      <p class="error-text" role="alert">{{ serverError() }}</p>
+    }
+
+    <div class="button-row">
+      <button class="btn btn-create" type="submit" [disabled]="saving()">CREATE</button>
+      <button class="btn" type="button" (click)="cancel()">CANCEL</button>
+    </div>
+  </form>
+</section>

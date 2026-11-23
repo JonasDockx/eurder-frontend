@@ -1,0 +1,12 @@
+.form.wide {
+  max-width: 760px;
+}
+
+.wide-col {
+  flex: 4;
+}
+
+.country-code {
+  width: 110px;
+  flex: none;
+}

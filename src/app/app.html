@@ -12,6 +12,7 @@
     @if (auth.user(); as user) {
       <button type="button" (click)="logout()" [title]="user.email">Log out</button>
     } @else {
+      <a routerLink="/customers/new" routerLinkActive="active">Register</a>
       <a routerLink="/login" routerLinkActive="active">Log in</a>
     }
   </nav>
