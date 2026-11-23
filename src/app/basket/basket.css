@@ -14,3 +14,59 @@
   background: #f8cecc;
   border-color: #b85450;
 }
+
+/* ORBA3: the green "order placed" dialog */
+.dialog {
+  padding: 0;
+  border: 1px solid #2d7600;
+  width: min(560px, 90vw);
+  background: #60a917;
+  color: white;
+}
+
+.dialog::backdrop {
+  background: rgb(0 0 0 / 0.4);
+}
+
+.dialog-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.4rem 0.6rem;
+  border-bottom: 1px solid #2d7600;
+}
+
+.dialog-header h2 {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: normal;
+}
+
+.dialog-x {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border: 1px solid #1ba1e2;
+  background: none;
+  cursor: pointer;
+}
+
+.dialog-body {
+  text-align: center;
+  padding: 2.5rem 1rem 1rem;
+}
+
+.dialog-total {
+  font-weight: bold;
+}
+
+.dialog-ok {
+  margin-top: 2rem;
+  min-width: 120px;
+  padding: 0.3rem 1rem;
+  font: inherit;
+  color: #555;
+  background: white;
+  border: 1px solid #999;
+  cursor: pointer;
+}

@@ -42,6 +42,10 @@ export class BasketService {
     this.lines.update((lines) => lines.filter((line) => line.itemId !== itemId));
   }
 
+  clear(): void {
+    this.lines.set([]);
+  }
+
   private load(): BasketLine[] {
     try {
       return JSON.parse(localStorage.getItem(STORAGE_KEY) ?? '[]');

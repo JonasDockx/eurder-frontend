@@ -37,8 +37,36 @@
 
     <p class="total">{{ basket.total() | currency: 'EUR' }}</p>
 
+    @if (auth.isAdmin()) {
+      <p class="error-text">Admins cannot place orders. Log in as a customer.</p>
+    } @else if (!auth.isLoggedIn()) {
+      <p>You will be asked to log in before your order is placed.</p>
+    }
+    @if (error()) {
+      <p class="error-text" role="alert">{{ error() }}</p>
+    }
+
     <div class="button-row">
-      <button class="btn btn-create" type="button" disabled title="Comes with ORBA3">PLACE ORDER</button>
+      <button class="btn btn-create" type="button" (click)="placeOrder()" [disabled]="placing() || auth.isAdmin()">
+        PLACE ORDER
+      </button>
     </div>
   }
+
+  <!-- Hidden until showModal() is called. "method=dialog": a button in this form closes the dialog. -->
+  <dialog #successDialog class="dialog" aria-labelledby="dialog-title" (close)="dialogClosed()">
+    <form method="dialog">
+      <header class="dialog-header">
+        <h2 id="dialog-title">ORDER PLACED</h2>
+        <button class="dialog-x" aria-label="Close"></button>
+      </header>
+      <div class="dialog-body">
+        <p>Your order has been successfully placed.<br />Thank you</p>
+        @if (placedOrder(); as order) {
+          <p class="dialog-total">Total: {{ order.totalPrice | currency: 'EUR' }}</p>
+        }
+        <button class="dialog-ok">Okidoki</button>
+      </div>
+    </form>
+  </dialog>
 </section>
