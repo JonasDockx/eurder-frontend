@@ -1,0 +1,44 @@
+<section>
+  <div class="section-header">
+    <h1 class="section-title">Your shopping basket</h1>
+  </div>
+
+  @if (basket.items().length === 0) {
+    <p>Your basket is empty. <a routerLink="/items">Go shopping</a></p>
+  } @else {
+    <table class="table">
+      <thead>
+      <tr>
+        <th>PRODUCT</th>
+        <th>AMOUNT</th>
+        <th class="number">PRICE</th>
+        <th></th>
+      </tr>
+      </thead>
+      <tbody>
+        @for (line of basket.items(); track line.itemId) {
+          <tr>
+            <td>{{ line.name }}</td>
+            <td>
+              <input class="form-control amount" type="number" min="1" step="1"
+                     [attr.aria-label]="'Amount of ' + line.name" [value]="line.amount"
+                     (change)="changeAmount(line.itemId, $any($event.target).value)" />
+            </td>
+            <td class="number">{{ line.amount * line.unitPrice | currency: 'EUR' }}</td>
+            <td class="actions">
+              <button class="btn btn-small btn-remove" type="button" [attr.aria-label]="'Remove ' + line.name"
+                      (click)="basket.remove(line.itemId)">X
+              </button>
+            </td>
+          </tr>
+        }
+      </tbody>
+    </table>
+
+    <p class="total">{{ basket.total() | currency: 'EUR' }}</p>
+
+    <div class="button-row">
+      <button class="btn btn-create" type="button" disabled title="Comes with ORBA3">PLACE ORDER</button>
+    </div>
+  }
+</section>

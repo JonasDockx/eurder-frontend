@@ -7,6 +7,7 @@ import { ItemDetail } from './items/item-detail/item-detail';
 import { CustomerList } from './customers/customer-list/customer-list';
 import { CustomerForm } from './customers/customer-form/customer-form';
 import { CustomerDetail } from './customers/customer-detail/customer-detail';
+import { Basket } from './basket/basket';
 
 export const routes: Routes = [
   { path: '', redirectTo: 'items', pathMatch: 'full' },
@@ -28,6 +29,7 @@ export const routes: Routes = [
     canActivate: [adminGuard],
     title: 'Edit customer',
   },
+  { path: 'basket', component: Basket, title: 'Basket' },
   { path: 'login', component: Login, title: 'Log in' },
   { path: '**', redirectTo: 'items' },
 ];

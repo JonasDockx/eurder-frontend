@@ -9,6 +9,7 @@
       <a routerLink="/items/new" routerLinkActive="active">New item</a>
       <a routerLink="/customers" routerLinkActive="active">Customers</a>
     }
+    <a routerLink="/basket" routerLinkActive="active">Basket ({{ basket.count() }})</a>
     @if (auth.user(); as user) {
       <button type="button" (click)="logout()" [title]="user.email">Log out</button>
     } @else {

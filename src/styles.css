@@ -181,3 +181,40 @@ a.btn {
 .spacer {
   flex: 1;
 }
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  border: 1px solid var(--text);
+}
+
+.table th, .table td {
+  padding: 0.9rem 0.5rem;
+  text-align: left;
+  border-bottom: 1px solid var(--text);
+}
+
+.table thead th {
+  background: #f3f3f3;
+  color: #666;
+  font-weight: normal;
+}
+
+.table td {
+  color: #555;
+}
+
+.table .actions {
+  text-align: right;
+  white-space: nowrap;
+}
+
+.table .number {
+  text-align: right;
+}
+
+.btn-small {
+  min-width: 0;
+  padding: 0.3rem 0.8rem;
+  font-size: 0.85rem;
+}
