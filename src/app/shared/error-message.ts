@@ -2,7 +2,7 @@ import { HttpErrorResponse } from '@angular/common/http';
 
 export function errorMessage(error: unknown): string {
   if (!(error instanceof HttpErrorResponse)) {
-    return 'Soemthing went wrong.';
+    return 'Something went wrong.';
   }
   if (error.status === 0) {
     return 'Cannot reach the server. Is the backend running?';
@@ -16,5 +16,5 @@ export function errorMessage(error: unknown): string {
       .map(([field, message]) => `${field}: ${message}`)
       .join(', ');
   }
-  return `Request failed (${error.status}.`;
+  return `Request failed (${error.status}).`;
 }
