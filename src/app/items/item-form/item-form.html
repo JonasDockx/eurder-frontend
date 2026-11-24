@@ -20,7 +20,7 @@
       <app-char-counter [length]="description().length" [max]="descriptionMax" />
     </div>
     @if (showError('description', 'required')) {
-      <p class="error-text">Description is required</p>
+      <p class="error-text">Description is required.</p>
     }
     @if (showError('description', 'maxlength')) {
       <p class="error-text">Description can be at most {{ descriptionMax }} characters long.</p>

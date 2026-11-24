@@ -39,12 +39,12 @@ export class CustomerForm implements OnInit {
     password: ['', [Validators.required, Validators.minLength(4)]],
     phone: this.fb.group({
       countryCode: ['32', [Validators.required, Validators.pattern(/^\d{1,3}$/)]],
-      number: ['', Validators.required, Validators.pattern(/^[0-9 ]{6,15}$/)],
+      number: ['', [Validators.required, Validators.pattern(/^[0-9 ]{6,15}$/)]],
     }),
     address: this.fb.group({
       street: ['', Validators.required],
       houseNumber: ['', Validators.required],
-      postalCode: ['', Validators.required, Validators.pattern(/^\d{4,5}$/)],
+      postalCode: ['', [Validators.required, Validators.pattern(/^\d{4,5}$/)]],
       city: ['', Validators.required],
       country: [COUNTRIES[0], Validators.required],
     }),
